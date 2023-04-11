@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Main_Widget(),
+      home: const Main_Widget(),
     );
   }
 }
@@ -92,24 +93,10 @@ class _Main_WidgetState extends State<Main_Widget> {
   }
 
   String dateTimeToday() {
-    print('${DateTime.now().day == DateTime.tuesday}');
-    if (DateTime.now().day == DateTime.monday) {
-      return "${DateTime.monday} ${DateTime.now().day}";
-    } else if (DateTime.now().day == DateTime.tuesday) {
-      return "${DateTime.tuesday} ${DateTime.now().day}";
-    } else if (DateTime.now().day == DateTime.wednesday) {
-      return "${DateTime.wednesday} ${DateTime.now().day}";
-    } else if (DateTime.now().day == DateTime.thursday) {
-      return "${DateTime.thursday} ${DateTime.now().day}";
-    } else if (DateTime.now().day == DateTime.friday) {
-      return "${DateTime.friday} ${DateTime.now().day}";
-    } else if (DateTime.now().day == DateTime.saturday) {
-      return "${DateTime.saturday} ${DateTime.now().day}";
-    } else if (DateTime.now().day == DateTime.sunday) {
-      return "${DateTime.sunday} ${DateTime.now().day}";
-    } else {
-      return '';
-    }
+    var now = DateTime.now();
+    var formatter = DateFormat('EEEE');
+    String formatted = formatter.format(now);
+    return '${formatted} ${now.day}';
   }
 
   ///상단 날짜 위젯
@@ -203,7 +190,7 @@ class _Main_WidgetState extends State<Main_Widget> {
       CardData(
           startTime: '14:40:00',
           endTime: '16:10:00',
-          subject: 'MONTHLY METTING',
+          subject: 'UI SEMINA',
           member: ['ME', 'William', 'Sophia', 'Benjamin', 'Olivia'],
           cardColor: Colors.yellowAccent),
     );
